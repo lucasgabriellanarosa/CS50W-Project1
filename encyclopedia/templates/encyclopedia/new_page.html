@@ -1,0 +1,19 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>Create a new entry</h1>
+
+    <p style="color: red;">{{ message }}</p>
+    
+    <form action="{% url 'new_page' %}" method="POST" class="d-flex flex-column w-50" style="gap: 1rem;">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="Title" autocomplete="off">
+        <textarea cols="10" rows="10" name="content" placeholder="Content"></textarea>
+        <button type="submit" class="btn btn-success">Create</button>
+    </form>
+
+{% endblock %}

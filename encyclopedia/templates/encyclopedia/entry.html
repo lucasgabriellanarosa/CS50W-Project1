@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ entry }}
+{% endblock %}
+
+{% block body %}
+    <div>{{ entry_content |safe }}</div>
+
+    <div class="d-flex" style="gap: 1rem;">
+
+        <form action="{% url 'edit_entry' entry=entry %}" method="GET">
+            {% csrf_token %}
+            <input type="submit" value="Edit" class="btn btn-info">
+        </form>
+    
+        <form action="{% url 'delete_entry' entry=entry %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Delete" class="btn btn-danger">
+        </form>
+
+    </div>
+
+{% endblock %}
